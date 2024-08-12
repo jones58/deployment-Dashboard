@@ -7,3 +7,5 @@
 - Check touched element and update Touch column
 
 - Add URL as anchor link for site name
+
+- Add figma sketch to readme, download fig file and delete.
