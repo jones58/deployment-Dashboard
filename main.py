@@ -3,11 +3,11 @@ from fasthtml.common import *
 def render(site):
     sid= f'site-{site.ROWID}'
     delete = A("Delete", hx_delete=f"/{site.ROWID}",hx_swap="outerHTML", target_id=f'{sid}')
-    return Tr(Td(A(site.name)), Td(site.name), Td(site.tech), Td(site.service), Td(site.status), Td(site.touch), Td(delete), id=sid)
+    return Tr(Td(site.name), Td(site.tech), Td(site.service), Td(site.status), Td(site.touch), Td(delete), id=sid)
 
 app, rt, sites, Site= fast_app("mysites.db", live=True, ROWID=int, name=str, tech=str, service=str, status=str, touch=bool, pk='ROWID', url=str, render=render)
 
-def add_inputs(): return Input(placeholder="add new site", id="name", hx_swap_oob="true"), Input(placeholder="tech", id="tech", hx_swap_oob="true"), Input(placeholder="service", id="service", hx_swap_oob="true"), Input(placeholder="URL", id="url", hx_swap_oob="true")
+def add_inputs(): return Input(placeholder="add new site", id="name", hx_swap_oob="true"), Input(placeholder="tech", id="tech", hx_swap_oob="true"), Input(placeholder="service", id="service", hx_swap_oob="true")
 
 @rt("/")
 def get():
