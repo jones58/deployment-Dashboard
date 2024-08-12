@@ -1,1 +1,0 @@
-- finish this [tutorial](https://docs.fastht.ml/) from 15 mins in.
