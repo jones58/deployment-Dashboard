@@ -9,3 +9,5 @@
 - Add URL as anchor link for site name
 
 - Add figma sketch to readme, download fig file and delete.
+
+- refer to [ping-check](https://github.com/mickeymarse/ping-check) for basic functionality
