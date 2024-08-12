@@ -6,17 +6,15 @@
 
 # Debugging
 
-## Getting Started
+## Local development
 
-Install the required dependencies:
+- Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Running Locally
-
-Start the development server on http://0.0.0.0:5001
+- Start the development server on http://0.0.0.0:5001
 
 ```bash
 python main.py
