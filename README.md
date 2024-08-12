@@ -1,8 +1,14 @@
 # Planning
 
 - As part of learning FastHTML, I wanted to build an app to check my deployments, with similar functionality to this [deployments dashboard](https://jamesdiffeycoding-pythonlivedashboard.vercel.app/).
+- I planned a table website design with Figma.
 
 # Building
+
+- I used the Vercel fasthtml template as a starting point.
+- After watching the [getting started video](https://www.youtube.com/watch?v=Auqrm7WFc0I) and refreshing my Python knowledge, I was ready to start building the app.
+- I used what I learnt in the video above (a todo list) to apply the same logic to a table, from which sites could be added or deleted as needed.
+- Checking for typos helped me debug issues.
 
 # Debugging
 
