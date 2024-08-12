@@ -1,12 +1,10 @@
-# FastHTML Boilerplate
+# Planning
 
-Deploy your [FastHTML](https://fastht.ml/) project to Vercel with zero configuration.
+- As part of learning FastHTML, I wanted to build an app to check my deployments, with similar functionality to this [deployments dashboard](https://jamesdiffeycoding-pythonlivedashboard.vercel.app/).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/fasthtml&template=fasthtml)
+# Building
 
-_Live Example: https://fasthtml-template.vercel.app_
-
-Visit the [FastHTML documentation](https://docs.fastht.ml/) to learn more.
+# Debugging
 
 ## Getting Started
 
@@ -36,5 +34,3 @@ vercel --prod
 ```
 
 Or `git push` to your repostory with our [git integration](https://vercel.com/docs/deployments/git).
-
-To view the source code for this template, [visit the example repository](https://github.com/vercel/vercel/tree/main/examples/fasthtml).
