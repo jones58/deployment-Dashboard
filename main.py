@@ -1,3 +1,5 @@
+import requests
+import asyncio
 from fasthtml.common import *
 
 def render(site):
@@ -42,10 +44,26 @@ def Footer():
 @rt("/{sid}")
 def delete(sid: int): sites.delete(sid)
 
+
+def check_url(url):
+    try:
+        response = requests.get(url, timeout=5)
+        return response.status_code == 200
+    except:
+        return False
+
+async def update_statuses():
+    while True:
+        for site in sites():
+            site.status = "Up" if check_url(site.url) else "Down"
+            sites.update(site)
+        await asyncio.sleep(60)  # Check every minute
+
 @rt("/")
 def post (site: Site): # type: ignore
     if site.url and not site.url.startswith('https://'):
         site.url = 'https://' + site.url
+    site.status = "Up" if check_url(site.url) else "Down"
     return sites.insert(site), add_inputs()
 
 serve()

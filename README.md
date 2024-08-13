@@ -10,7 +10,7 @@
 - I used what I learnt in the video above (a todo list) to apply the same logic to a table, from which sites could be added or deleted as needed.
 - Checking for typos helped me debug issues.
 - I wanted to add an URL to the inputs, which would wrap around the name as an anchor tag. This proved difficult, as when i added a new input it would not show up in the table. I resolved this by stopping the app, deleting the database and restarting.
-- Next I wanted to check that the URL responded to 200, which would be a good indicator that the site is online. I implemented this by adding a status column to the table, and a function to check the URL.
+- Next I wanted to check that the URL responded to 200, which would be a good indicator that the site is online. I implemented this by adding a status column to the table, and a function to check the URL. I used asyncio to check the URL in the background every minute and update as needed.
 
 # Debugging
 
