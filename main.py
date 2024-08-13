@@ -1,5 +1,8 @@
 import requests
 import asyncio
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from fasthtml.common import *
 
 tlink = Script(src="https://cdn.tailwindcss.com")
@@ -59,6 +62,8 @@ async def update_statuses():
     while True:
         for site in sites():
             site.status = "OK" if check_url(site.url) else "Down"
+            if site.status == "Down":
+                send_email(f"Site Down: {site.name}", f"The site {site.name} ({site.url}) is down.")
             sites.update(site)
         await asyncio.sleep(60)  # Check every minute
 
@@ -72,5 +77,25 @@ def post (site: Site): # type: ignore
         site.url = 'https://' + site.url
     site.status = "Up" if check_url(site.url) else "Down"
     return sites.insert(site), add_inputs()
+
+def send_email(subject, body):
+    # add these in env file.sender_email = "your_email@example.com"
+    # receiver_email = "your_email@example.com"
+    # password = "your_email_password"
+
+    message = MIMEMultipart()
+    message["From"] = sender_email
+    message["To"] = receiver_email
+    message["Subject"] = subject
+    message.attach(MIMEText(body, "plain"))
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        server.login(sender_email, password)
+        server.send_message(message)
+
+
+
+
+
 
 serve()
