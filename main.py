@@ -30,7 +30,7 @@ def get():
     Thead(Tr(Th("Name"), Th("Tech"), Th("Service"), Th("Status"), Th("Edit"))),
     Tbody(*sites(), id="sites-table"),
 )
-    return Titled(H1("Deployment Dashboard", cls="text-4xl font-bold text-white-600 mb-6"), Card(table, header=frm, footer=Footer()))
+    return Titled(H1("Deployment Dashboard", cls="text-4xl font-bold text-white-600 py-6"), Card(table, header=frm, footer=Footer()))
 
 def Footer():
     return (
