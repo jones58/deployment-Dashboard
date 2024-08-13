@@ -14,7 +14,6 @@
 - I wanted to add Tailwind to the app, since it was not included in fasthtml by default. Whilst PicoCSS is good, Tailwind is much better. I used the [Chatbot example](https://github.com/AnswerDotAI/fasthtml-example/blob/main/02_chatbot/basic.py) for how to add Tailwind to my app.
 - Added a title to my app using Title(). I originally used Titled, as in the learning doc but since I wanted to style the H1 using Tailwind, I used Title to add this separately.
 - Added basic styling to the site using Tailwind.
-- I implemented a feature where I would get an email if a site is down.
 
 ## Local development
 
