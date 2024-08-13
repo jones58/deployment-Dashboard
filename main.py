@@ -59,6 +59,10 @@ async def update_statuses():
             sites.update(site)
         await asyncio.sleep(60)  # Check every minute
 
+@app.on_event("startup")
+async def start_status_updater():
+    asyncio.create_task(update_statuses())
+
 @rt("/")
 def post (site: Site): # type: ignore
     if site.url and not site.url.startswith('https://'):
