@@ -5,6 +5,14 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from fasthtml.common import *
 
+from dotenv import load_dotenv
+load_dotenv()
+import os
+sender_email = os.getenv('sender_email')
+receiver_email= os.getenv('receiver_email')
+password = os.getenv('password')
+
+
 tlink = Script(src="https://cdn.tailwindcss.com")
 
 favicon = Link(rel="icon", type="image/x-icon", href="/public/favicon.ico")
@@ -79,10 +87,6 @@ def post (site: Site): # type: ignore
     return sites.insert(site), add_inputs()
 
 def send_email(subject, body):
-    # add these in env file.sender_email = "your_email@example.com"
-    # receiver_email = "your_email@example.com"
-    # password = "your_email_password"
-
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = receiver_email
@@ -92,8 +96,6 @@ def send_email(subject, body):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender_email, password)
         server.send_message(message)
-
-
 
 
 
