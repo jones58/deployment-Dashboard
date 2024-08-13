@@ -8,7 +8,7 @@ def render(site):
     name_link = A(site.name, href=site.url, target="_blank")
     return Tr(Td(name_link), Td(site.tech), Td(site.service), Td(site.status), Td(site.touch), Td(delete), id=sid)
 
-app, rt, sites, Site= fast_app("mysites.db", live=True, ROWID=int, name=str, tech=str, service=str, status=str, touch=bool, pk='ROWID', url=str, render=render)
+app, rt, sites, Site= fast_app("mysites.db", live=True, ROWID=int, name=str, tech=str, service=str, status=str, pk='ROWID', url=str, render=render)
 
 def add_inputs(): return Input(placeholder="add new site", id="name", hx_swap_oob="true"), Input(placeholder="tech", id="tech", hx_swap_oob="true"), Input(placeholder="service", id="service", hx_swap_oob="true"), Input(placeholder="url", id="url", hx_swap_oob="true")
 
@@ -25,7 +25,7 @@ def get():
         hx_post ="/", target_id="sites-table", hx_swap="beforeend"
     )
     table = Table(
-    Thead(Tr(Th("Name"), Th("Tech"), Th("Service"), Th("Status"), Th("Touched"), Th("Delete?"))),
+    Thead(Tr(Th("Name"), Th("Tech"), Th("Service"), Th("Status"), Th("Edit"))),
     Tbody(*sites(), id="sites-table"),
 )
     return (Titled("Deployments Dashboard", Card(table, header=frm, footer=Footer())))
@@ -55,7 +55,7 @@ def check_url(url):
 async def update_statuses():
     while True:
         for site in sites():
-            site.status = "Up" if check_url(site.url) else "Down"
+            site.status = "OK" if check_url(site.url) else "Down"
             sites.update(site)
         await asyncio.sleep(60)  # Check every minute
 
