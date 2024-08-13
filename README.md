@@ -13,6 +13,7 @@
 - Next I wanted to check that the URL responded to 200, which would be a good indicator that the site is online. I implemented this by adding a status column to the table, and a function to check the URL. I used asyncio to check the URL in the background every minute and update as needed.
 - I wanted to add Tailwind to the app, since it was not included in fasthtml by default. Whilst PicoCSS is good, Tailwind is much better. I used the [Chatbot example](https://github.com/AnswerDotAI/fasthtml-example/blob/main/02_chatbot/basic.py) for how to add Tailwind to my app.
 - Added a title to my app using Title(). I originally used Titled, as in the learning doc but since I wanted to style the H1 using Tailwind, I used Title to add this separately.
+- Added basic styling to the site using Tailwind.
 
 # Debugging
 
