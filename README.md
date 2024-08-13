@@ -11,6 +11,7 @@
 - Checking for typos helped me debug issues.
 - I wanted to add an URL to the inputs, which would wrap around the name as an anchor tag. This proved difficult, as when i added a new input it would not show up in the table. I resolved this by stopping the app, deleting the database and restarting.
 - Next I wanted to check that the URL responded to 200, which would be a good indicator that the site is online. I implemented this by adding a status column to the table, and a function to check the URL. I used asyncio to check the URL in the background every minute and update as needed.
+- I wanted to add Tailwind to the app, since it was not included in fasthtml by default. Whilst PicoCSS is good, Tailwind is much better. I used the [Chatbot example](https://github.com/AnswerDotAI/fasthtml-example/blob/main/02_chatbot/basic.py) for how to add Tailwind to my app.
 
 # Debugging
 

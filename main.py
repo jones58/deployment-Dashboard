@@ -2,13 +2,15 @@ import requests
 import asyncio
 from fasthtml.common import *
 
+tlink = Script(src="https://cdn.tailwindcss.com")
+
 def render(site):
     sid= f'site-{site.ROWID}'
     delete = A("Delete", hx_delete=f"/{site.ROWID}",hx_swap="outerHTML", target_id=f'{sid}')
     name_link = A(site.name, href=site.url, target="_blank")
     return Tr(Td(name_link), Td(site.tech), Td(site.service), Td(site.status), Td(delete), id=sid)
 
-app, rt, sites, Site= fast_app("mysites.db", live=True, ROWID=int, name=str, tech=str, service=str, status=str, pk='ROWID', url=str, render=render)
+app, rt, sites, Site= fast_app("mysites.db", live=True, ROWID=int, name=str, tech=str, service=str, status=str, pk='ROWID', url=str, render=render, hdrs=(tlink,picolink))
 
 def add_inputs(): return Input(placeholder="add new site", id="name", hx_swap_oob="true"), Input(placeholder="tech", id="tech", hx_swap_oob="true"), Input(placeholder="service", id="service", hx_swap_oob="true"), Input(placeholder="url", id="url", hx_swap_oob="true")
 
@@ -22,14 +24,13 @@ def get():
             url="https://fasthtml-template.vercel.app",
         ),
     frm = Form (Group(add_inputs(), Button("Add") ),
-        hx_post ="/", target_id="sites-table", hx_swap="beforeend"
+        hx_post ="/", target_id="sites-table", hx_swap="beforeend", cls="flex flex-col gap-2",
     )
     table = Table(
     Thead(Tr(Th("Name"), Th("Tech"), Th("Service"), Th("Status"), Th("Edit"))),
     Tbody(*sites(), id="sites-table"),
 )
-    return (Titled("Deployments Dashboard", Card(table, header=frm, footer=Footer())))
-
+    return Titled(H1("Deployment Dashboard", cls="text-4xl font-bold text-white-600 mb-6"), Card(table, header=frm, footer=Footer()))
 
 def Footer():
     return (
