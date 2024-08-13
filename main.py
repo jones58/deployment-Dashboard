@@ -3,11 +3,12 @@ from fasthtml.common import *
 def render(site):
     sid= f'site-{site.ROWID}'
     delete = A("Delete", hx_delete=f"/{site.ROWID}",hx_swap="outerHTML", target_id=f'{sid}')
-    return Tr(Td(site.name), Td(site.tech), Td(site.service), Td(site.status), Td(site.touch), Td(delete), id=sid)
+    name_link = A(site.name, href=site.url, target="_blank")
+    return Tr(Td(name_link), Td(site.tech), Td(site.service), Td(site.status), Td(site.touch), Td(delete), id=sid)
 
 app, rt, sites, Site= fast_app("mysites.db", live=True, ROWID=int, name=str, tech=str, service=str, status=str, touch=bool, pk='ROWID', url=str, render=render)
 
-def add_inputs(): return Input(placeholder="add new site", id="name", hx_swap_oob="true"), Input(placeholder="tech", id="tech", hx_swap_oob="true"), Input(placeholder="service", id="service", hx_swap_oob="true")
+def add_inputs(): return Input(placeholder="add new site", id="name", hx_swap_oob="true"), Input(placeholder="tech", id="tech", hx_swap_oob="true"), Input(placeholder="service", id="service", hx_swap_oob="true"), Input(placeholder="url", id="url", hx_swap_oob="true")
 
 @rt("/")
 def get():
@@ -36,17 +37,15 @@ def Footer():
                             href="https://github.com/jones58/fasthtml-test",
                             target="_blank",
                         ),
-                        "",
-                          A(
-                            "View LinkedIn",
-                            href="https://vercel.com/templates/python/fasthtml-python-boilerplate",
-                            target="_blank",
-                        ))),
+                        )),
 
 @rt("/{sid}")
 def delete(sid: int): sites.delete(sid)
 
 @rt("/")
-def post (site: Site): return sites.insert(site), add_inputs() # type: ignore
+def post (site: Site): # type: ignore
+    if site.url and not site.url.startswith('https://'):
+        site.url = 'https://' + site.url
+    return sites.insert(site), add_inputs()
 
 serve()
