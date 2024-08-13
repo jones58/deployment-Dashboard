@@ -12,7 +12,7 @@ favicon = Link(rel="icon", type="image/x-icon", href="/public/favicon.ico")
 def render(site):
     sid= f'site-{site.ROWID}'
     delete = A("Delete", cls="hover:text-gray-700", hx_delete=f"/{site.ROWID}",hx_swap="outerHTML", target_id=f'{sid}')
-    name_link = A(site.name, href=site.url, target="_blank")
+    name_link = A(site.name, href=site.url, target="_blank", cls="hover:text-gray-700")
     return Tr(Td(name_link), Td(site.tech), Td(site.service), Td(site.status), Td(delete), id=sid)
 
 app, rt, sites, Site= fast_app("mysites.db", live=True, ROWID=int, name=str, tech=str, service=str, status=str, pk='ROWID', url=str, render=render, hdrs=(tlink,picolink, favicon))
@@ -73,7 +73,7 @@ async def start_status_updater():
 def post (site: Site): # type: ignore
     if site.url and not site.url.startswith('https://'):
         site.url = 'https://' + site.url
-    site.status = "Up" if check_url(site.url) else "Down"
+    site.status = "OK" if check_url(site.url) else "Down"
     return sites.insert(site), add_inputs()
 
 serve()
