@@ -36,8 +36,8 @@ def get():
                         A(
                             "View Code",
                             href="https://github.com/jones58/deployment-Dashboard",
-                            target="_blank",cls="text-2xl text-gray-600 hover:text-gray-700 p-10 mx-auto w-[50%] align-middle text-center"
-                        ),
+                            target="_blank",cls="text-2xl text-gray-600 hover:text-gray-700 p-10"
+                        ), cls="flex justify-center"
                         )
     table = Table(
     Thead(Tr(Th("Name"), Th("Tech"), Th("Service"), Th("Status"), Th("Edit"))),
