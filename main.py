@@ -36,14 +36,14 @@ def get():
                         A(
                             "View Code",
                             href="https://github.com/jones58/fasthtml-test",
-                            target="_blank", cls="text-blue-600 hover:text-blue-700"
+                            target="_blank", cls="text-blue-600 hover:text-blue-700 px-20 text-center"
                         ),
                         )
     table = Table(
     Thead(Tr(Th("Name"), Th("Tech"), Th("Service"), Th("Status"), Th("Edit"))),
     Tbody(*sites(), id="sites-table"),cls="w-[50%] mx-auto py-10",
 )
-    return  Title('Deployment Dashboard'), Div(H1("Deployment Dashboard", cls="text-4xl font-bold text-white-600 px-4 py-6 mx-auto w-[50%] text-center"), frm, table, footer=Footer())
+    return  Title('Deployment Dashboard'), Div(H1("Deployment Dashboard", cls="text-4xl font-bold text-white-600 px-4 py-6 mx-auto w-[50%] text-center"),P("A tool to check Jack's Deployments"), frm, table, footer)
 
 
 
