@@ -32,18 +32,18 @@ def get():
     frm = Form (Group(add_inputs(), Button("Add", cls="px-5 bg-green-600 hover:bg-green-700") ),
         hx_post ="/", target_id="sites-table", hx_swap="beforeend", cls="w-[50%] mx-auto py-10"
     )
-    footer= P(
+    footer= Div(
                         A(
                             "View Code",
-                            href="https://github.com/jones58/fasthtml-test",
-                            target="_blank", cls="text-blue-600 hover:text-blue-700 px-20 text-center"
+                            href="https://github.com/jones58/deployment-Dashboard",
+                            target="_blank",cls="text-2xl text-gray-600 hover:text-gray-700 p-10 mx-auto w-[50%] align-middle text-center"
                         ),
                         )
     table = Table(
     Thead(Tr(Th("Name"), Th("Tech"), Th("Service"), Th("Status"), Th("Edit"))),
     Tbody(*sites(), id="sites-table"),cls="w-[50%] mx-auto py-10",
 )
-    return  Title('Deployment Dashboard'), Div(H1("Deployment Dashboard", cls="text-4xl font-bold text-white-600 px-4 py-6 mx-auto w-[50%] text-center"),P("A tool to check Jack's Deployments"), frm, table, footer)
+    return  Title('Deployment Dashboard'), Div(H1("Deployment Dashboard",  cls="text-4xl font-bold text-white-600 px-4 py-6 mx-auto w-[50%] text-center"), frm, table, footer)
 
 
 
