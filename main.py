@@ -35,7 +35,7 @@ def get():
     footer= Div(
                         A(
                             "View Code",
-                            href="https://github.com/jones58/deployment-Dashboard",
+                            href="https://github.com/jackkershaw/deployment-Dashboard",
                             target="_blank",cls="text-2xl text-gray-600 hover:text-gray-700 p-10"
                         ), cls="flex justify-center"
                         )
